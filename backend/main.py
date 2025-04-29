@@ -1,7 +1,8 @@
 from fastapi import FastAPI
+from tasks import ping
 
 app = FastAPI()
-
-@app.get("/")
-async def root():
-    return {"message": "Hello, Petroleum Agent!"}
+@app.post("/test-ping/")
+async def test_ping():
+    ping.delay()
+    return {"status": "queued"}
