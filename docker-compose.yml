@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - TZ=Europe/Paris
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
